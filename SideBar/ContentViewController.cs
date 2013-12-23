@@ -7,8 +7,9 @@ namespace SideBar
 {
 	public class ContentViewController : UIViewController
 	{
-		protected UIView _container { get; set; }
-		private UIImageView _imageView { get; set; }
+		private UINavigationBar _navigationBar;
+		protected UIView _container;
+		private UIImageView _imageView;
 
 		public ContentViewController ()
 		{
@@ -25,6 +26,18 @@ namespace SideBar
 
 			_imageView = new UIImageView ();
 			_container.AddSubview (_imageView);
+
+			_navigationBar = new UINavigationBar ();
+			_navigationBar.Frame = new RectangleF (0f, 0f, 320f, 45f);
+			_navigationBar.BarStyle = UIBarStyle.Default;
+
+			UINavigationItem navItems = new UINavigationItem { LeftBarButtonItem = new UIBarButtonItem("Меню", UIBarButtonItemStyle.Plain, null) };
+			_navigationBar.Items = new UINavigationItem[]
+			{
+				navItems
+			};
+			View.AddSubview (_navigationBar);
+
 
 			SetImage(UIImage.FromFile("wishlist.png"));
 		}
