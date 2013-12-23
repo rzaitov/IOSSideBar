@@ -11,14 +11,20 @@ namespace SideBar
 	{
 		private UIWindow window;
 		private SideBarViewController _sideBar;
+		private ContentViewController _contentController;
 
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			_sideBar = new SideBarViewController ();
 
-			window.RootViewController = _sideBar;
+			_contentController = new ContentViewController ();
+
+//			window.RootViewController = _sideBar;
+			window.RootViewController = _contentController;
 			window.MakeKeyAndVisible ();
+
+
 
 			return true;
 		}

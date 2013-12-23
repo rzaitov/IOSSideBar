@@ -12,7 +12,6 @@ namespace SideBar
 
 		public SideBarViewController ()
 		{
-
 		}
 
 		public override void ViewDidLoad ()
@@ -28,7 +27,6 @@ namespace SideBar
 
 			View.AddSubview (_table);
 			_table.Frame = _table.Superview.Bounds;
-
 		}
 	}
 }

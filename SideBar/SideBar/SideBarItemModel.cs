@@ -6,6 +6,7 @@ namespace SideBar
 	{
 		public string IconPath { get; set; }
 		public string Title { get; set; }
+		public MenuType Type { get; set; }
 	}
 }
 
