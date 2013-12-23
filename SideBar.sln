@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideBar", "SideBar\SideBar.csproj", "{39E73A9A-22D6-4459-8549-DF2A26D86A87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Debug|iPhone.Build.0 = Debug|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Release|iPhone.ActiveCfg = Release|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Release|iPhone.Build.0 = Release|iPhone
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{39E73A9A-22D6-4459-8549-DF2A26D86A87}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = SideBar\SideBar.csproj
+	EndGlobalSection
+EndGlobal
