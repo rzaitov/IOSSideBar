@@ -8,8 +8,8 @@ IOSSideBar
 Основная идея – инкапсулировать код показа/скрытия в одном классе-посреднике, который организует взаимодействие ViewController и SideBarController.
 
 Участники:
-ContentViewController – UIViewController, отображающий какой-то контент у которого есть кнопка по нажатию на которую необходимо показать SideBar
-SideBarViewController – UIViewController, который отображает элементы сайдбара. В приложениях чаще всего в этой роли выступает UIViewController у которого внутри есть таблица.
-SideBarMediator – POCO класс который получает ссылки на экземпляры ContentViewController и SideBarViewController.
+ - ContentViewController – UIViewController, отображающий какой-то контент у которого есть кнопка по нажатию на которую необходимо показать SideBar
+ - SideBarViewController – UIViewController, который отображает элементы сайдбара. В приложениях чаще всего в этой роли выступает UIViewController у которого внутри есть таблица.
+ - SideBarMediator – POCO класс который получает ссылки на экземпляры ContentViewController и SideBarViewController.
 
 При необходимости показать/скрыть сайдбар ContentViewController делегирует эту задачу посреднику SideBarMediator.
