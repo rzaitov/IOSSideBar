@@ -18,7 +18,7 @@ namespace SideBar
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			_sideBar = new SideBarViewController ();
 
-			_contentController = new ContentViewController ();
+			_contentController = new ContentViewController(_sideBar);
 
 //			window.RootViewController = _sideBar;
 			window.RootViewController = _contentController;

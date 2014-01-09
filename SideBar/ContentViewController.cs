@@ -3,17 +3,57 @@ using System.Drawing;
 
 using MonoTouch.UIKit;
 
+using Touch.Common;
+
 namespace SideBar
 {
-	public class ContentViewController : UIViewController
+	public class ContentViewController : UIViewController, IViewControllerWithSidebar
 	{
 		private UINavigationBar _navigationBar;
-		protected UIView _container;
+		private UIView _container;
 		private UIImageView _imageView;
+		private SideBarViewController _sideBar;
 
-		public ContentViewController ()
+		private SideBarMediator<ContentViewController> _sideBarMediator;
+
+		#region IViewControllerWithSidebar implementation
+		public UIView ViewToMove
 		{
+			get
+			{
+				return _container;
+			}
+		}
 
+		public float SideBarWidth
+		{
+			get
+			{
+				return 220f;
+			}
+		}
+		#endregion
+
+		public ContentViewController(SideBarViewController sideBar)
+		{
+			_sideBar = sideBar;
+			_sideBar.SideBarItemSelected += HandleSideBarItemSelected;
+			_sideBarMediator = new SideBarMediator<ContentViewController>(this, _sideBar);
+		}
+
+		void HandleSideBarItemSelected (SideBarItemModel selectedItem)
+		{
+			UIImage contentImg = UIImage.FromFile(selectedItem.IconPath);
+			SetImage (contentImg);
+
+			_sideBarMediator.ToggleSideBar();
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+
+			_sideBarMediator.TryHideSideBar ();
 		}
 
 		public override void ViewDidLoad ()
@@ -23,23 +63,28 @@ namespace SideBar
 			_container = new UIView ();
 			View.AddSubview (_container);
 			_container.Frame = _container.Superview.Bounds;
+			_container.BackgroundColor = UIColor.Gray;
 
 			_imageView = new UIImageView ();
 			_container.AddSubview (_imageView);
 
 			_navigationBar = new UINavigationBar ();
-			_navigationBar.Frame = new RectangleF (0f, 0f, 320f, 45f);
+			_navigationBar.Frame = new RectangleF (0f, 0f, 320f, 55f);
 			_navigationBar.BarStyle = UIBarStyle.Default;
 
-			UINavigationItem navItems = new UINavigationItem { LeftBarButtonItem = new UIBarButtonItem("Меню", UIBarButtonItemStyle.Plain, null) };
+			UINavigationItem navItems = new UINavigationItem { LeftBarButtonItem = new UIBarButtonItem("Меню", UIBarButtonItemStyle.Plain, OnMenuButtonPressed) };
 			_navigationBar.Items = new UINavigationItem[]
 			{
 				navItems
 			};
-			View.AddSubview (_navigationBar);
-
+			_container.AddSubview(_navigationBar);
 
 			SetImage(UIImage.FromFile("wishlist.png"));
+		}
+
+		private void OnMenuButtonPressed(object sender, EventArgs e)
+		{
+			_sideBarMediator.ToggleSideBar();
 		}
 
 		public void SetImage(UIImage image)
@@ -50,7 +95,7 @@ namespace SideBar
 			SizeF size = GetInboundRect (maxSize, image.Size);
 
 			_imageView.Frame = new RectangleF (new PointF (), size);
-			_imageView.Center = _container.Center;
+			_imageView.CenterInParent ();
 		}
 
 		private SizeF GetInboundRect(SizeF maxSize, SizeF size)
