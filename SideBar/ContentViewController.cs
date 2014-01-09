@@ -9,8 +9,10 @@ namespace SideBar
 {
 	public class ContentViewController : UIViewController
 	{
-		private UINavigationBar _navigationBar;
+		// Эта архитектура требует чтобы был контейнер в котором расположены все остальные вьюхи
+		// это связано с тем что View будет контейнером как для вьюхи экрана(_container) так и для вьюхи сайдбара
 		private UIView _container;
+		private UINavigationBar _navigationBar;
 		private UIImageView _imageView;
 		private SideBarViewController _sideBar;
 

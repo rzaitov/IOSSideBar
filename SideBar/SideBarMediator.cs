@@ -44,7 +44,11 @@ namespace SideBar
 		{
 			IsSideBarOpened = true;
 
+			// Для правильного жизненого цикла. Будут вызваны метды VillAppear итд
 			_extendedViewController.AddChildViewController(_sideBar);
+
+			_viewToMove.RemoveFromSuperview ();
+			_sideBar.View.AddSubview (_viewToMove);
 
 			NSAction animation = () =>
 			{
