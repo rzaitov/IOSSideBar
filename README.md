@@ -13,3 +13,6 @@ IOSSideBar
  - SideBarMediator – POCO класс который получает ссылки на экземпляры ContentViewController и SideBarViewController.
 
 При необходимости показать/скрыть сайдбар ContentViewController делегирует эту задачу посреднику SideBarMediator.
+
+![Alt](Preview/photo1.png)
+![Alt](Preview/photo2.png)
