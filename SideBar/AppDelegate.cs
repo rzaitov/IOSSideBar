@@ -20,11 +20,8 @@ namespace SideBar
 
 			_contentController = new ContentViewController(_sideBar);
 
-//			window.RootViewController = _sideBar;
 			window.RootViewController = _contentController;
 			window.MakeKeyAndVisible ();
-
-
 
 			return true;
 		}

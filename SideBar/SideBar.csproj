@@ -104,7 +104,6 @@
     <Compile Include="SideBar\SideBarCell.cs" />
     <Compile Include="ContentViewController.cs" />
     <Compile Include="SideBar\MenuType.cs" />
-    <Compile Include="SideBar\IViewControllerWithSidebar.cs" />
     <Compile Include="FrameExtensions.cs" />
     <Compile Include="SideBarMediator.cs" />
   </ItemGroup>

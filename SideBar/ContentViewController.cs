@@ -7,38 +7,19 @@ using Touch.Common;
 
 namespace SideBar
 {
-	public class ContentViewController : UIViewController, IViewControllerWithSidebar
+	public class ContentViewController : UIViewController
 	{
 		private UINavigationBar _navigationBar;
 		private UIView _container;
 		private UIImageView _imageView;
 		private SideBarViewController _sideBar;
 
-		private SideBarMediator<ContentViewController> _sideBarMediator;
-
-		#region IViewControllerWithSidebar implementation
-		public UIView ViewToMove
-		{
-			get
-			{
-				return _container;
-			}
-		}
-
-		public float SideBarWidth
-		{
-			get
-			{
-				return 220f;
-			}
-		}
-		#endregion
+		private SideBarMediator _sideBarMediator;
 
 		public ContentViewController(SideBarViewController sideBar)
 		{
 			_sideBar = sideBar;
 			_sideBar.SideBarItemSelected += HandleSideBarItemSelected;
-			_sideBarMediator = new SideBarMediator<ContentViewController>(this, _sideBar);
 		}
 
 		void HandleSideBarItemSelected (SideBarItemModel selectedItem)
@@ -78,6 +59,8 @@ namespace SideBar
 				navItems
 			};
 			_container.AddSubview(_navigationBar);
+
+			_sideBarMediator = new SideBarMediator(this, _container, _sideBar, 260f);
 
 			SetImage(UIImage.FromFile("wishlist.png"));
 		}

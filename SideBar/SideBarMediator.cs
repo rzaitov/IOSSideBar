@@ -7,19 +7,23 @@ using Touch.Common;
 
 namespace SideBar
 {
-	public class SideBarMediator<T> where T: UIViewController, IViewControllerWithSidebar
+	public class SideBarMediator
 	{
 		private const double SidebarAnimateDuration = 0.4;
 
-		private readonly T _extendedViewController;
+		private readonly UIViewController _extendedViewController;
 		private readonly UIViewController _sideBar;
+		private readonly UIView _viewToMove;
+		private readonly float _sideBarWidth;
 
 		public bool IsSideBarOpened { get; set; }
 
-		public SideBarMediator(T extendedViewController, UIViewController sideBar)
+		public SideBarMediator(UIViewController extendedViewController, UIView viewToMove, UIViewController sideBar, float sideBarWidth)
 		{
 			_extendedViewController = extendedViewController;
+			_viewToMove = viewToMove;
 			_sideBar = sideBar;
+			_sideBarWidth = sideBarWidth;
 		}
 
 		public void TryHideSideBar()
@@ -38,14 +42,13 @@ namespace SideBar
 
 		private void ShowSideBar ()
 		{
-//			Assert.False(IsSideBarOpened);
 			IsSideBarOpened = true;
 
 			_extendedViewController.AddChildViewController(_sideBar);
 
 			NSAction animation = () =>
 			{
-				_extendedViewController.ViewToMove.SetFrameX(_extendedViewController.SideBarWidth);
+				_viewToMove.SetFrameX(_sideBarWidth);
 			};
 
 			NSAction onComplete = () =>
@@ -66,7 +69,7 @@ namespace SideBar
 
 			NSAction animation = () =>
 			{
-				_extendedViewController.ViewToMove.SetFrameX(0);
+				_viewToMove.SetFrameX(0);
 			};
 
 			NSAction onComplete = () =>
